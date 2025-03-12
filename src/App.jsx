@@ -1,13 +1,14 @@
-import './App.css'
-import Navbar from './components/Navbar/Navbar' 
+import React from 'react';
+import NavBar from './components/Navbar';
+import ItemListContainer from './components/ItemListContainer';
 
-function App() {
-
+const App = () => {
   return (
-    <>
-      <Navbar />
-    </>
-  )
-}
+    <div style={{ backgroundColor: '#101010', minHeight: '100vh' }}>
+      <NavBar />
+      <ItemListContainer mensaje="Bienvenido a Juan Ronco, consultoría en comunicación estratégica y diseño web" />
+    </div>
+  );
+};
 
-export default App
+export default App;
