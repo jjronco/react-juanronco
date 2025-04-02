@@ -1,14 +1,20 @@
-import React from 'react';
-import NavBar from './components/Navbar';
-import ItemListContainer from './components/ItemListContainer';
+import { BrowserRouter as Router, Routes, Route } from "react-router";
+import NavBar from "./components/NavBar";
+import ItemListContainer from "./components/ItemListContainer";
+import ItemDetailContainer from "./components/ItemDetailContainer";
 
-const App = () => {
+function App() {
   return (
-    <div style={{ backgroundColor: '#101010', minHeight: '100vh' }}>
+    <Router>
       <NavBar />
-      <ItemListContainer mensaje="Bienvenido a Juan Ronco, consultoría en comunicación estratégica y diseño web" />
-    </div>
+      <Routes>
+        <Route path="/" element={<ItemListContainer />} />
+        <Route path="/categoria/:categoriaId" element={<ItemListContainer />} />
+        <Route path="/item/:id" element={<ItemDetailContainer />} />
+        <Route path="*" element={<h2>Página no encontrada</h2>} />
+      </Routes>
+    </Router>
   );
-};
+}
 
 export default App;
