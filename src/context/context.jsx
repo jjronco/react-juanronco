@@ -21,11 +21,11 @@ export const ContextProvider = (props) => {
                     return {
                         ...element,
                         cantidad: element.cantidad + cantidad
-                    }
+                    };
                 } else {
                     return element;
                 };
-            })
+            });
             setCarrito(newCarrito);
         } else {
             setCarrito([...carrito, nuevoProducto]);
@@ -34,8 +34,13 @@ export const ContextProvider = (props) => {
         toast("Producto agregado correctamente");
     };
 
+    function eliminarDelCarrito(id) {
+        setCarrito((prevCarrito) => prevCarrito.filter(item => item.id !== id));
+        toast("Producto eliminado del carrito");
+    };
+
     return (
-        <AppContext.Provider value={{ carrito, agregarAlCarrito }}>
+        <AppContext.Provider value={{ carrito, agregarAlCarrito, eliminarDelCarrito }}>
             {props.children}
         </AppContext.Provider>
     );

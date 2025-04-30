@@ -1,25 +1,23 @@
-import React, { useState } from "react";
+import React from 'react';
 
-function ItemCount({ stock, contador, setContador }) {
+const ItemCount = ({ stock, contador, setContador }) => {
+  const increase = () => {
+    if (contador < stock) {
+      setContador(contador + 1);
+    }
+  };
 
-  function modificarContador(operacion) {
-      if (operacion === "+") {
-          if (contador < stock) {
-              setContador(contador + 1);
-          };
-      } else {
-          if (contador > 1) {
-              setContador(contador - 1);
-          };
-      };
+  const decrease = () => {
+    if (contador > 1) {
+      setContador(contador - 1);
+    }
   };
 
   return (
     <div>
-      <button onClick={decrease} disabled={count === 1}>-</button>
-      <span>{count}</span>
-      <button onClick={increase} disabled={count === stock}>+</button>
-      <button onClick={() => onAdd(count)}>Agregar al carrito</button>
+      <button onClick={decrease}>-</button>
+      <span>{contador}</span>
+      <button onClick={increase}>+</button>
     </div>
   );
 };

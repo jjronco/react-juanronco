@@ -1,17 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { FaShoppingCart } from 'react-icons/fa';
 import { useAppContext } from '../../context/context';
-import {FaShoppingCart} from 'react-icons/fa';
 import './CartWidget.css';
 
 const CartWidget = () => {
-
   const { carrito } = useAppContext();
 
   return (
-    <div className="d-flex align-items-center text-white ms-3">
-      <FaShoppingCart />
+    <Link to="/cart" className="cart-widget">
+      <FaShoppingCart className="cart-icon" />
       <p>{carrito.length}</p>
-    </div>
+    </Link>
   );
 };
 
