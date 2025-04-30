@@ -1,19 +1,30 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router";
-import NavBar from "./components/NavBar";
-import ItemListContainer from "./components/ItemListContainer";
-import ItemDetailContainer from "./components/ItemDetailContainer";
+import { BrowserRouter, Route, Routes } from 'react-router';
+import './App.css';
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import Navbar from './components/Navbar/Navbar';
+import ItemDetail from './components/ItemDetail/ItemDetail';
+import { ContextProvider } from './context/context';
+import { ToastContainer } from 'react-toastify';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
+
 
 function App() {
   return (
-    <Router>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<ItemListContainer />} />
-        <Route path="/categoria/:categoriaId" element={<ItemListContainer />} />
-        <Route path="/item/:id" element={<ItemDetailContainer />} />
-        <Route path="*" element={<h2>Página no encontrada</h2>} />
-      </Routes>
-    </Router>
+    <ContextProvider>
+      <ToastContainer />
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/categoria/:categoria" element={<ItemListContainer />} />
+          <Route path="/detalle/:id" element={<ItemDetail />} />
+          <Route path="*" element={<p>404 Not Found</p>} />
+        </Routes>
+      </BrowserRouter>
+    </ContextProvider>
   );
 }
 
