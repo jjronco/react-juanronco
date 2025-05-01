@@ -10,6 +10,16 @@ export const ContextProvider = (props) => {
     const [carrito, setCarrito] = useState([]);
 
     function agregarAlCarrito(prod, cantidad) {
+        if (cantidad <= 0 || isNaN(cantidad)) {
+            toast.error("La cantidad debe ser un número válido mayor a 0");
+            return;
+        }
+
+        if (cantidad > prod.stock) {
+            toast.error(`No puedes agregar más de ${prod.stock} unidades de ${prod.nombre}`);
+            return;
+        }
+
         const nuevoProducto = {
             ...prod,
             cantidad,
@@ -18,18 +28,24 @@ export const ContextProvider = (props) => {
         if (carrito.some(el => el.id === prod.id)) {
             const newCarrito = carrito.map(element => {
                 if (element.id === prod.id) {
-                    return {
-                        ...element,
-                        cantidad: element.cantidad + cantidad
-                    };
+                    const nuevaCantidad = element.cantidad + cantidad;
+                    if (nuevaCantidad <= prod.stock) {
+                        return {
+                            ...element,
+                            cantidad: nuevaCantidad,
+                        };
+                    } else {
+                        toast.error(`No puedes agregar más de ${prod.stock} unidades de ${prod.nombre}`);
+                        return element;
+                    }
                 } else {
                     return element;
-                };
+                }
             });
             setCarrito(newCarrito);
         } else {
             setCarrito([...carrito, nuevoProducto]);
-        };
+        }
 
         toast("Producto agregado correctamente");
     };

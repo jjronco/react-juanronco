@@ -10,7 +10,7 @@ const CartWidget = () => {
   return (
     <Link to="/cart" className="cart-widget">
       <FaShoppingCart className="cart-icon" />
-      <p>{carrito.length}</p>
+      <p>{carrito.reduce((acc, item) => acc + item.cantidad, 0)}</p>
     </Link>
   );
 };

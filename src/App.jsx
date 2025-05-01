@@ -7,6 +7,8 @@ import ItemDetail from './components/ItemDetail/ItemDetail';
 import { ContextProvider } from './context/context';
 import { ToastContainer } from 'react-toastify';
 import Cart from './components/Cart/Cart';
+import CheckoutPage from "./components/CheckoutPage/CheckoutPage";
+import ConfirmationPage from "./components/ConfirmationPage/ConfirmationPage";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -16,7 +18,16 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 function App() {
   return (
     <ContextProvider>
-      <ToastContainer />
+      <ToastContainer
+          position="top-center"
+          autoClose={1500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover />
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -24,7 +35,9 @@ function App() {
           <Route path="/categoria/:categoria" element={<ItemListContainer />} />
           <Route path="/detalle/:id" element={<ItemDetail />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="*" element={<p>404 Not Found</p>} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/confirmacion/:id" element={<ConfirmationPage />} />
+          <Route path="*" element={<p>Página no encontrada.</p>} />
         </Routes>
       </BrowserRouter>
     </ContextProvider>

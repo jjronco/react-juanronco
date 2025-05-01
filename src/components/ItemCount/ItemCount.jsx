@@ -14,10 +14,22 @@ const ItemCount = ({ stock, contador, setContador }) => {
   };
 
   return (
-    <div>
-      <button onClick={decrease}>-</button>
-      <span>{contador}</span>
-      <button onClick={increase}>+</button>
+    <div className="d-flex align-items-center justify-content-center">
+      <button 
+        className="btn btn-outline-secondary mx-2" 
+        onClick={decrease}
+      >
+        -
+      </button>
+
+      <span className="mx-2">{contador}</span>
+
+      <button 
+        className="btn btn-outline-secondary mx-2" 
+        onClick={increase}
+      >
+        +
+      </button>
     </div>
   );
 };

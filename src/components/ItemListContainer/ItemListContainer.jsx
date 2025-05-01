@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 function ItemListContainer() {
   const [loading, setLoading] = useState(true);
   const [todosLosProductos, setTodosLosProductos] = useState([]);
-  
+
   const { categoria } = useParams();
   const productosCollection = collection(db, "productos");
 
@@ -19,7 +19,6 @@ function ItemListContainer() {
       .then(snapshot => {
         const arrayDeProductos = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         setTodosLosProductos(arrayDeProductos);
-        toast("Productos cargados correctamente");
         setLoading(false);
       })
       .catch(err => {

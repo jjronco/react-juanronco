@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import { useAppContext } from '../../context/context';
 import { db } from '../../firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
@@ -13,6 +13,7 @@ function ItemDetail() {
   const [contador, setContador] = useState(1);
 
   const { agregarAlCarrito } = useAppContext();
+  const navigate = useNavigate();
 
   const productosCollection = collection(db, "productos");
 
@@ -36,6 +37,10 @@ function ItemDetail() {
       });
   }, [id]);
 
+  const handleVolver = () => {
+    navigate("/");
+  };
+
   return (
     loading ? 
       <Loader /> : 
@@ -52,7 +57,10 @@ function ItemDetail() {
 
                 <ItemCount stock={producto.stock} contador={contador} setContador={setContador} />
 
-                <button className="btn btn-secondary my-2" onClick={() => agregarAlCarrito(producto, contador)}>Agregar al carrito</button>
+                <div className="d-flex justify-content-start mt-3">
+                  <button className="btn btn-secondary my-2" onClick={() => agregarAlCarrito(producto, contador)}>Agregar al carrito</button>
+                  <button className="btn btn-outline-secondary my-2 ms-2" onClick={handleVolver}>Volver</button>
+                </div>
               </div>
             </>
             :
