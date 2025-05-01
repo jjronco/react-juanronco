@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ItemList from './ItemList';
-import { db } from '../../firebase/firebaseConfig';  // Firebase configuration
+import { db } from '../../firebase/firebaseConfig';
 
 const ItemListContainer = ({ categoryId }) => {
   const [products, setProducts] = useState([]);

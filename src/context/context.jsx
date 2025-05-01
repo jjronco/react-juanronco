@@ -56,7 +56,7 @@ export const ContextProvider = (props) => {
     };
 
     return (
-        <AppContext.Provider value={{ carrito, agregarAlCarrito, eliminarDelCarrito }}>
+        <AppContext.Provider value={{ carrito, setCarrito, agregarAlCarrito, eliminarDelCarrito }}>
             {props.children}
         </AppContext.Provider>
     );

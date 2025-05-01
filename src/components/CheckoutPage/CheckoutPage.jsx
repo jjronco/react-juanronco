@@ -14,6 +14,8 @@ function CheckoutPage() {
     );
   }
 
+  const totalCompra = carrito.reduce((acc, producto) => acc + producto.precio * producto.cantidad, 0);
+
   return (
     <div>
       <h2>Resumen de tu compra</h2>
@@ -24,7 +26,8 @@ function CheckoutPage() {
           </li>
         ))}
       </ul>
-      <h3>Total: ${carrito.reduce((acc, producto) => acc + producto.precio * producto.cantidad, 0)}</h3>
+      <h3>Total: ${totalCompra}</h3>
+      <h4>Ingresa tus datos para completar la compra</h4>
       <CheckoutForm />
     </div>
   );

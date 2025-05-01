@@ -1,11 +1,21 @@
 import React from 'react';
 import { useAppContext } from '../../context/context';
+import { useNavigate } from 'react-router-dom';
 import './Cart.css';
 
 const Cart = () => {
   const { carrito, eliminarDelCarrito } = useAppContext();
+  const navigate = useNavigate();
 
   const totalPrecio = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+
+  const handleCheckout = () => {
+    if (carrito.length === 0) {
+      alert("Tu carrito está vacío. Agrega productos para proceder al pago.");
+    } else {
+      navigate('/checkout');
+    }
+  };
 
   return (
     <div className="cart-container">
@@ -30,7 +40,7 @@ const Cart = () => {
 
           <div className="cart-footer">
             <div className="total-price">Total: ${totalPrecio}</div>
-            <button className="checkout-button">Proceder al pago</button>
+            <button className="checkout-button" onClick={handleCheckout}>Proceder al pago</button>
           </div>
         </>
       ) : (

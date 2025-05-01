@@ -3,6 +3,7 @@ import { useAppContext } from "../../context/context";
 import { db } from "../../firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import './CheckoutForm.css';
 
 function CheckoutForm() {
   const { carrito, setCarrito } = useAppContext();
@@ -44,8 +45,8 @@ function CheckoutForm() {
   };
 
   return (
-    <div>
-      <h2>Formulario de Checkout</h2>
+    <div className="checkout-form-container">
+      <h2>Formulario de Compra</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="nombre">Nombre:</label>

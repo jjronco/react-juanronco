@@ -1,0 +1,43 @@
+/* ConfirmationPage.css */
+
+.confirmation-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    color: #4caf50;
+  }
+  
+  h3 {
+    color: #333;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  ul li {
+    margin: 5px 0;
+  }
+  
+  .loading-container,
+  .error-container {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .loading-container h2 {
+    color: #007bff;
+  }
+  
+  .error-container h2 {
+    color: #e74c3c;
+  }
+  
