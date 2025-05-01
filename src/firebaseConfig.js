@@ -1,14 +1,17 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
+const { VITE_API_KEY, VITE_AUTH_DOMAIN, VITE_PROJECT_ID, VITE_STORAGE_BUCKET, VITE_MESSAGING_SENDER_ID, VITE_APP_ID } = import.meta.env;
+
 const firebaseConfig = {
-    apiKey: "AIzaSyA82Ws1Lxk6p_BTiODYCxD_-vO8GKu1PsE",
-    authDomain: "react-juanronco.firebaseapp.com",
-    projectId: "react-juanronco",
-    storageBucket: "react-juanronco.firebasestorage.app",
-    messagingSenderId: "1002807329904",
-    appId: "1:1002807329904:web:69e5e40ea1fb89d41960b5"
-  };
+  apiKey: VITE_API_KEY,
+  authDomain: VITE_AUTH_DOMAIN,
+  projectId: VITE_PROJECT_ID,
+  storageBucket: VITE_STORAGE_BUCKET,
+  messagingSenderId: VITE_MESSAGING_SENDER_ID,
+  appId: VITE_APP_ID,
+};
 
 const app = initializeApp(firebaseConfig);
-export const db = getFirestore (app);
+
+export const db = getFirestore(app);
