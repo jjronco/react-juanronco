@@ -8,10 +8,9 @@ const NavBar = () => {
     <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "#101010" }}>
       <div className="container">
         <NavLink className="navbar-brand" to="/">
-          <img src="../src/assets/logoj.png" alt="Juan Ronco" className="logo img-fluid" />
+          <img src="../../src/assets/logoj.png" alt="Juan Ronco" className="logo img-fluid" />
         </NavLink>
         
-        {/* Botón del menú en versión móvil */}
         <button
           className="navbar-toggler"
           type="button"
